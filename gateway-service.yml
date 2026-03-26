@@ -1,6 +1,9 @@
 server:
   port: 8080
-
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
 spring:
   application:
     name: gateway-service
@@ -19,3 +22,14 @@ spring:
           uri: http://localhost:8083
           predicates:
             - Path=/product/**
+#This is used for dynamic routing, it will automatically discover the services registered in Eureka
+#and route to them based on their service IDs. Uncomment the below lines to enable dynamic routing.
+#Above static routes can be removed if dynamic routing is enabled.
+#Static routes are preferred in production for better performance and control,
+#while dynamic routing is useful during development or in environments where services are frequently changing.
+#  spring:
+#    cloud:
+#      gateway:
+#        discovery:
+#          locator:
+#            enabled: true
