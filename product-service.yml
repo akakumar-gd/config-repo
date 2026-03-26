@@ -16,3 +16,7 @@ resilience4j:
     instances:
       productCB:
         timeoutDuration: 2s
+catalog-service:
+  url: http://localhost:8081/catalog
+inventory-service:
+  url: http://localhost:8082/inventory
